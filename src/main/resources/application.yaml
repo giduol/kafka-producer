@@ -1,10 +1,21 @@
 spring:
-  application:
-    name: kafka
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: clustergiovanni.eu.cluster.ntail.io:9092
+
+    properties:
+      security.protocol: SASL_SSL
+      sasl.mechanism: PLAIN
+      sasl.jaas.config: >-
+        org.apache.kafka.common.security.plain.PlainLoginModule required
+        username="default"
+        password="3JAB7QG4UJRDVE54AXTQPTKOUO";
+
     consumer:
-      group-id: teste-consumer
+      group-id: minha-aplicacao
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
