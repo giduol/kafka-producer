@@ -1,21 +1,19 @@
+
 spring:
   kafka:
-    bootstrap-servers: clustergiovanni.eu.cluster.ntail.io:9092
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
 
     properties:
       security.protocol: SASL_SSL
       sasl.mechanism: PLAIN
-      sasl.jaas.config: >-
-        org.apache.kafka.common.security.plain.PlainLoginModule required
-        username="default"
-        password="3JAB7QG4UJRDVE54AXTQPTKOUO";
-
-    consumer:
-      group-id: minha-aplicacao
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="$YDO75FVWILMGYW7R" password="$cfltp8y7MhFv2IPwRhg753coFnfW7ABYXJDWRmtV7uM90wvpUoJMepYIrjlh2wuQ";
 
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+    consumer:
+      group-id: meu-consumer-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
