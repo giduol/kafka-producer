@@ -13,7 +13,7 @@ public class KafkaProducerService {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void enviarMensagem(String mensagem) {
-        kafkaTemplate.send("teste", mensagem);
+    public void enviarMensagem(String key, String mensage) {
+        kafkaTemplate.send("teste", key, mensage);
     }
 }

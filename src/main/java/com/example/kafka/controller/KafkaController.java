@@ -1,3 +1,4 @@
+
 package com.example.kafka.controller;
 
 import com.example.kafka.service.KafkaProducerService;
@@ -16,10 +17,18 @@ public class KafkaController {
 
     @PostMapping("/send")
     public ResponseEntity<Void> enviar(
-            @RequestBody String mensagem) {
+            @RequestBody KafkaMessageRequest request) {
 
-        producerService.enviarMensagem(mensagem);
+        producerService.enviarMensagem(
+                request.key(),
+                request.mensagem()
+        );
 
         return ResponseEntity.accepted().build();
     }
+
+    public record KafkaMessageRequest(
+            String key,
+            String mensagem
+    ) {}
 }
